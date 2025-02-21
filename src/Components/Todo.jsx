@@ -6,7 +6,13 @@ import TodoItems from './TodoItems'
 
 const Todo = () => {
 
-    const [todoList,setTodoList] = useState([]);
+    const [todoList,setTodoList] = useState( ()=> {
+
+        const savedTodos = localStorage.getItem("todos");
+        return savedTodos ? JSON.parse(savedTodos) : [];
+
+
+    });
 
 
     const inputRef = useRef();
